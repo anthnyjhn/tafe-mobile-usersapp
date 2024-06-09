@@ -1,0 +1,11 @@
+{
+    "name":"My CrayZi Styles",
+    "border":{
+        "borderColor":"#000",
+        "borderWidth":1, 
+        "borderStyle":"solid",
+        "padding":"1%",
+        "margin":"1%",
+        "width":"96%"
+    }
+}
