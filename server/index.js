@@ -10,7 +10,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-
 const port = 3000;
 
 app.get('/people',(request, response) => {
@@ -49,6 +48,8 @@ app.put('/people/:id',(request, response) => {
 
 app.delete('/people/:id',(request, response) => {
     people = people.filter(p=>p.id != request.params.id); 
+    
+    console.log('deleted',request.params.id);
     response.status(204).send();  
 });
 
