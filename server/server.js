@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 
-const peopleRoutes = require('./routes/peopleRoutes');
+const peopleRoutes = require('./routes/people.route');
 
 const app = express();
 const port = 3000;
