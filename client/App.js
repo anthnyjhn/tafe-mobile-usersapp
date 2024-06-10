@@ -89,7 +89,7 @@ const App = () => {
         return (
           <User.Create
           success={(newUser) => setUsers([...users, newUser])}
-            onClose={() => setCurrentView('list')}
+            close={() => setCurrentView('list')}
             onLoader={() => setCurrentView('loading')}
           />
         );
@@ -98,7 +98,7 @@ const App = () => {
           <User.Edit
             user={user}
             success={updateUserList}
-            onClose={() => setCurrentView('list')}
+            close={() => setCurrentView('list')}
             onLoader={() => setCurrentView('loading')}
           />
         );
