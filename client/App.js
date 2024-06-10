@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, Pressable, StyleSheet, ActivityIndicator, SafeAreaView, ScrollView, Platform } from 'react-native';
 import User from './components/user';
 const styles = require('./styles.json');
 
@@ -9,20 +9,22 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [currentView, setCurrentView] = useState('loading');
 
+  const fetchUsers = async () => {
+    try {
+      // 10.0.2.2
+      const response = await fetch('http://localhost:3000/people');
+      const data = await response.json();
+
+      setUsers(data)
+      setCurrentView('list');
+    } catch (error) {
+      console.log('Failed to fetch users:', error);
+      setCurrentView('error');
+    }
+  };
+
   // Fetch users
   useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/people');
-        const data = await response.json();
-        setUsers(data);
-        setCurrentView('list');
-      } catch (error) {
-        console.error('Failed to fetch users:', error);
-        setCurrentView('error');
-      }
-    };
-
     fetchUsers();
   }, []);
 
@@ -62,7 +64,7 @@ const App = () => {
         );
       case 'list':
         return (
-          <View>
+            <View>
             <Pressable onPress={() => setCurrentView('create')} style={customStyles.addUserBtn}>
               <Text style={customStyles.addUserTxt}>Add User</Text>
             </Pressable>
