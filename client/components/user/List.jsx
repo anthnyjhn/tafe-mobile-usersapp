@@ -34,6 +34,14 @@ const List = (props) => {
           >
             <Text style={listStyle.allTexts}>Delete</Text>
           </Pressable>
+          <Pressable
+            onPress={() => {
+              props.move(u);
+            }}
+            style={listStyle.pressables3}
+          >
+            <Text style={listStyle.allTexts}>Move Up</Text>
+          </Pressable>
         </View>
       ))}
     </View>
@@ -49,7 +57,7 @@ const deleteUser = (u, p) => {
     console.error(error);
   }
 };
-
+ 
 const listStyle = StyleSheet.create({
   userNameTxt: {
     width: 100,
@@ -80,6 +88,15 @@ const listStyle = StyleSheet.create({
     marginBottom: 6,
     minWidth: "48%",
   },
+  pressables3: {
+    width: 50,
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 4,
+    backgroundColor: "#fca64b",
+    marginBottom: 6,
+    minWidth: "48%",
+  },
   allTexts: {
     color: "white",
     textAlign: "center",
@@ -100,6 +117,7 @@ List.propTypes = {
   ).isRequired,
   update: PropTypes.func.isRequired,
   success: PropTypes.func.isRequired,
+  
 };
 
 export default List;
