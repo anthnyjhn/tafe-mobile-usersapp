@@ -90,7 +90,7 @@ const App = () => {
           <User.Create
           success={(newUser) => setUsers([...users, newUser])}
             close={() => setCurrentView('list')}
-            onLoader={() => setCurrentView('loading')}
+            loader={() => setCurrentView('loading')}
           />
         );
       case 'edit':
@@ -99,7 +99,7 @@ const App = () => {
             user={user}
             success={updateUserList}
             close={() => setCurrentView('list')}
-            onLoader={() => setCurrentView('loading')}
+            loader={() => setCurrentView('loading')}
           />
         );
       case 'error':
